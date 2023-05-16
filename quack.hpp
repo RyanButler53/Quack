@@ -27,6 +27,7 @@ public:
 
     // Public Methods
     void push(T val);
+    void push_front(T val);
     T pop();
     T dequeue();
     bool empty();

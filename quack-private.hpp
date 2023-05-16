@@ -48,6 +48,12 @@ void Quack<T>::push(T val){
 }
 
 template <typename T>
+void Quack<T>::push_front(T val){
+    queue_.push_back(val);
+    ++size_;
+}
+
+template <typename T>
 void Quack<T>::reshuffle(vector<T> &full, vector<T> &empty){
 
     if (size_ == 1){
