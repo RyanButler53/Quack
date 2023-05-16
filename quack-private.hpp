@@ -70,7 +70,7 @@ T Quack<T>::front() {
     } else if (queue_.empty()){
         reshuffle(stack_, queue_);
     }
-    return queue_.front();
+    return queue_.back();
 }
 
 template <typename T>
