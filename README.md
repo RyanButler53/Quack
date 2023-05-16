@@ -10,6 +10,8 @@ A templated C++ implementation of the Quack (Queue + Stack) ADT using 2 std::vec
 
 `type dequeue()`: Get the first item from the queue
 
+`bool empty()`: Checks if the Quack is empty
+
 ### Files in this Repo: 
 
 `quack.hpp`: Header file with function and class declarations

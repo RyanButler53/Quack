@@ -16,7 +16,7 @@ T Quack<T>::pop(){
     int value;
     if (stack_.size() == 0)
     {
-        reshuffleStack();
+        reshuffle(queue_, stack_);
     }
     value = stack_.back();
     stack_.pop_back();
@@ -33,7 +33,7 @@ T Quack<T>::dequeue(){
     }
     int value;
     if (queue_.size() == 0){
-        reshuffleQueue();
+        reshuffle(stack_, queue_);
     }
     value = queue_.back();
     queue_.pop_back();
@@ -48,34 +48,18 @@ void Quack<T>::push(T val){
 }
 
 template <typename T>
-void Quack<T>::reshuffleQueue(){
-    // Queue is empty case
+void Quack<T>::reshuffle(vector<T> &full, vector<T> &empty){
+
     if (size_ == 1){
-        queue_.push_back(stack_.back());
-        stack_.pop_back();
+        empty.push_back(full.back());
+        full.pop_back();
     } else {
-        size_t numItems = size_ / 2;
-        queue_.resize(numItems);
-        std::reverse_copy(begin(stack_), begin(stack_) + numItems, begin(queue_));
-        std::move(begin(stack_) + numItems, end(stack_), begin(stack_));
-        stack_.resize(size_ - numItems);
+        size_t numItems = size_ / 2 + size_ % 2;
+        empty.resize(numItems);
+        std::reverse_copy(begin(full), begin(full) + numItems, begin(empty));
+        std::move(begin(full) + numItems, end(full), begin(full));
+        full.resize(size_ - numItems);
     }
-    return;
-}
-template <typename T>
-void Quack<T>::reshuffleStack(){
-    // Stack is empty case
-    if (size_ == 1){
-        stack_.push_back(queue_.back());
-        queue_.pop_back();
-    } else {
-        size_t numItems = size_ / 2;
-        stack_.resize(numItems);
-        std::reverse_copy(begin(queue_), begin(queue_) + numItems, begin(stack_));
-        std::move(begin(queue_) + numItems, end(queue_), begin(queue_));
-        queue_.resize(size_ - numItems);
-    }
-    return;
 }
 
 template <typename T>
@@ -90,6 +74,11 @@ void Quack<T>::printToStream(ostream& out) const{
     }
     out << "\n";
 
+}
+
+template <typename T>
+bool Quack<T>::empty(){
+    return size_ == 0;
 }
 
 template <typename T>

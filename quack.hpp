@@ -9,22 +9,27 @@ template <typename T>
 class Quack
 {
 private:
+    // Data
     std::vector<T> queue_;
     std::vector<T> stack_;
     size_t size_;
     
-    void reshuffleQueue();
-    void reshuffleStack();
+    // Functions
+    void reshuffle(std::vector<T>& full, std::vector<T>& empty);
 
 public:
+
+    // Constructors
     Quack();
     ~Quack() = default;
     Quack(const Quack &other) = delete;
     Quack &operator=(Quack &other) = delete;
 
+    // Public Methods
     void push(T val);
     T pop();
     T dequeue();
+    bool empty();
 
     void printToStream(std::ostream &out) const;
 };

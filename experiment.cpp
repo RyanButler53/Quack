@@ -144,13 +144,15 @@ void exp4(vector<double>& quackVec, vector<double>& listVec, size_t n){
 
 int main(int argc, char **argv) {
 
+    // Process Args
     size_t n = (argc > 1) ? strtoul(argv[1], nullptr, 10) : 100000UL;
     size_t numExperiments = (argc > 2) ? strtoul(argv[2], nullptr, 10) : 10UL;
 
-    // Experiment 1: n pushes
+    // Set up time tracking vectors
     vector<double> listVec;
     vector<double> quackVec;
-    list<int> l;
+
+    // Experiment 1: n pushes
     for (size_t exp = 0; exp < numExperiments; ++exp)
     {
         exp1(quackVec, listVec, n);
