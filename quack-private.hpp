@@ -63,11 +63,24 @@ void Quack<T>::reshuffle(vector<T> &full, vector<T> &empty){
 }
 
 template <typename T>
-T Quack<T>::front() const{
+T Quack<T>::front() {
+    if (size_ == 0){
+        cerr << "Calling front() on empty quack" << endl;
+        exit(1);
+    } else if (queue_.empty()){
+        reshuffle(stack_, queue_);
+    }
     return queue_.front();
 }
+
 template <typename T>
-T Quack<T>::back() const {
+T Quack<T>::back() {
+    if (size_ == 0){
+        cerr << "Calling back() on empty quack" << endl;
+        exit(1);
+    } else if (stack_.empty()){
+        reshuffle(queue_, stack_);
+    }
     return stack_.back();
 }
 

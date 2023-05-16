@@ -31,8 +31,8 @@ public:
     void pop();
     void dequeue();
     bool empty();
-    T front() const;
-    T back() const;
+    T front();
+    T back();
 
     void printToStream(std::ostream &out) const;
 };
