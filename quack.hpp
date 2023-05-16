@@ -28,9 +28,11 @@ public:
     // Public Methods
     void push(T val);
     void push_front(T val);
-    T pop();
-    T dequeue();
+    void pop();
+    void dequeue();
     bool empty();
+    T front() const;
+    T back() const;
 
     void printToStream(std::ostream &out) const;
 };

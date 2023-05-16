@@ -7,38 +7,32 @@ Quack<T>::Quack() : queue_{}, stack_{},size_{0} {
 }
 
 template <typename T>
-T Quack<T>::pop(){
+void Quack<T>::pop(){
     if (size_ == 0){
         std::cerr << "Popping an empty quack" << endl;
         throw("Popping an empty quack");
         exit(1);
     }
-    int value;
     if (stack_.size() == 0)
     {
         reshuffle(queue_, stack_);
     }
-    value = stack_.back();
     stack_.pop_back();
     --size_;
-    return value;
 }
 
 template <typename T>
-T Quack<T>::dequeue(){
+void Quack<T>::dequeue(){
     if (size_ == 0){
         cerr << "Dequeue on empty quack" << endl;
         throw("Dequeue on empty quack");
         exit(1);
     }
-    int value;
     if (queue_.size() == 0){
         reshuffle(stack_, queue_);
     }
-    value = queue_.back();
     queue_.pop_back();
     --size_;
-    return value;
 }
 
 template <typename T>
@@ -66,6 +60,15 @@ void Quack<T>::reshuffle(vector<T> &full, vector<T> &empty){
         std::move(begin(full) + numItems, end(full), begin(full));
         full.resize(size_ - numItems);
     }
+}
+
+template <typename T>
+T Quack<T>::front() const{
+    return queue_.front();
+}
+template <typename T>
+T Quack<T>::back() const {
+    return stack_.back();
 }
 
 template <typename T>

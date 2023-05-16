@@ -8,9 +8,13 @@ A templated C++ implementation of the Quack (Queue + Stack) ADT using 2 std::vec
 
 `void push_front(item)`: Push an item to the front of the queue
 
-`type pop()`: Pop item from top of stack
+`void pop()`: Pop item from top of stack
 
-`type dequeue()`: Get the first item from the queue
+`void dequeue()`: Remove the first item from the queue
+
+`type front()`: Returns the item at the front of the queue
+
+`type back()`: Returns the item at the back of the queue
 
 `bool empty()`: Checks if the quack is empty
 
