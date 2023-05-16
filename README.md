@@ -10,7 +10,7 @@ A templated C++ implementation of the Quack (Queue + Stack) ADT using 2 std::vec
 
 `type dequeue()`: Get the first item from the queue
 
-`bool empty()`: Checks if the Quack is empty
+`bool empty()`: Checks if the quack is empty
 
 ### Files in this Repo: 
 
@@ -20,7 +20,9 @@ A templated C++ implementation of the Quack (Queue + Stack) ADT using 2 std::vec
 
 `Makefile`: Build the experiment
 
-`Experiment.cpp`: Runs a small experiment to test the speed of the quack vs std::queue. Usage: `./experiment n numTrials`
+`Experiment.cpp`: Runs a small experiment to test the speed of the quack vs `std::queue`. 
+
+Usage: `./experiment n numTrials`
 
 
 ### Asymtotic Runtime (n items in quack): 
